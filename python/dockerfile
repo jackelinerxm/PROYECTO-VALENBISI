@@ -1,0 +1,7 @@
+FROM python:3.9
+
+COPY extraccion_base.py .
+
+RUN pip install -r requirements.txt
+
+CMD ["python3", "extraccion_base.py"]

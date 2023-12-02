@@ -15,7 +15,6 @@ def cambios_valenbisi(url: str):
             bici_disponibles:int = clase["available"]
             hueco_disponible:int = clase["free"]
             fecha_hora:str = clase["updated_at"]
-            print({bici_disponibles})
     else:
         print(f"Error: {status_code}")
 

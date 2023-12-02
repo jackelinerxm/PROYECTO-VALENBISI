@@ -4,7 +4,7 @@ import time
 
 def connect_to_mongodb(coleccion):
     # Conéctate a tu instancia de MongoDB (asegúrate de tener MongoDB ejecutándose localmente o especifica la URL de conexión)
-    client = pymongo.MongoClient("mongodb://root:example@localhost:27017/")
+    client = pymongo.MongoClient("mongodb://root:example@host.docker.internal:27017/")
 
     # Selecciona la base de datos y la colección
     db = client["jackypepe"]

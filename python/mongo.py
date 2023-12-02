@@ -2,28 +2,25 @@ import pymongo
 from datetime import datetime
 import time
 
-def connect_to_mongodb():
-    
- 
+def connect_to_mongodb(coleccion):
     # Conéctate a tu instancia de MongoDB (asegúrate de tener MongoDB ejecutándose localmente o especifica la URL de conexión)
     client = pymongo.MongoClient("mongodb://root:example@localhost:27017/")
 
     # Selecciona la base de datos y la colección
     db = client["jackypepe"]
-    collection = db["estaciones_bisi"]
+    collection = db[coleccion]
 
     return collection
 
-def store_data_in_mongodb(data):
+def store_data_in_mongodb(data, coleccion, primary_key):
     # Conecta a MongoDB
-    collection = connect_to_mongodb()
+    collection = connect_to_mongodb(coleccion)
 
     # Crea un documento con datos y una marca de tiempo
     document = {
-        "data": data,
-        "timestamp": datetime.now()
+        "_id": primary_key,
+        "data": data
     }
-
     # Inserta el documento en la colección
     collection.insert_one(document)
 
@@ -35,5 +32,3 @@ if __name__ == "__main__":
         # Llama a la función para almacenar datos en MongoDB
         store_data_in_mongodb(data_to_store)
 
-        # Espera 5 minutos antes de almacenar el siguiente conjunto de datos
-        time.sleep(300)  # 300 segundos = 5 minutos

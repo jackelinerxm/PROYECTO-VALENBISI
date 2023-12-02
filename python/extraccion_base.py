@@ -1,8 +1,5 @@
 import requests
-from mongo import store_data_in_mongodb
-
-
-URL:str = 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/valenbisi-disponibilitat-valenbisi-dsiponibilidad/records?limit=100'
+from .mongo import store_data_in_mongodb
 
 # obtener datos basicos del JSON 
 
@@ -34,10 +31,9 @@ def valenbisi_api(url: str):
             parada.append(ticket)
             parada.append(fecha_hora)
             parada.append(coordenadas)
-            store_data_in_mongodb(parada)
+            primary_key = (f'{numero}_{fecha_hora}')
+            store_data_in_mongodb(parada,nombre_estacion,primary_key)
             paradas.append(parada)
         return(paradas)
     else:
         print(f"Error: {status_code}")
-    
-valenbisi_api(URL)

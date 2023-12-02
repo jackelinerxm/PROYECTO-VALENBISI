@@ -18,10 +18,10 @@ def valenbisi_api(url: str):
             numero:int = clase["number"]
             abierta:bool = clase["open"]
             totales:int = clase["total"]
-            bici_disponibles:list = []
-            hueco_disponible:list = []
+            bici_disponibles:int = clase["available"]
+            hueco_disponible:int = clase["free"]
+            fecha_hora:str = clase["updated_at"]
             ticket:bool = clase["ticket"]
-            fecha_hora:list = []
             coordenadas:list = clase["geo_shape"]["geometry"]["coordinates"]
             parada.append(nombre_estacion)
             parada.append(numero)
@@ -38,4 +38,3 @@ def valenbisi_api(url: str):
         print(f"Error: {status_code}")
     
 valenbisi_api(URL)
-

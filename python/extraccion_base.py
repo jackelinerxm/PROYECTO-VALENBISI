@@ -32,7 +32,7 @@ def valenbisi_api(url: str):
             parada.append(fecha_hora)
             parada.append(coordenadas)
             primary_key = (f'{numero}_{fecha_hora}')
-            store_data_in_mongodb(parada,nombre_estacion,primary_key)
+            store_data_in_mongodb(clase,nombre_estacion,primary_key)
             paradas.append(parada)
         return(paradas)
     else:

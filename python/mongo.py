@@ -3,12 +3,14 @@ from datetime import datetime
 import time
 
 def connect_to_mongodb():
+    
+ 
     # Conéctate a tu instancia de MongoDB (asegúrate de tener MongoDB ejecutándose localmente o especifica la URL de conexión)
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    client = pymongo.MongoClient("mongodb://root:example@localhost:27017/")
 
     # Selecciona la base de datos y la colección
-    db = client["mi_base_de_datos"]
-    collection = db["mi_coleccion"]
+    db = client["jackypepe"]
+    collection = db["estaciones_bisi"]
 
     return collection
 

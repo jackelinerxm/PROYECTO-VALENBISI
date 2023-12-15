@@ -11,6 +11,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 
+#credentials. admin, pass
   mongo-express:
     image: mongo-express
     restart: always
@@ -23,6 +24,23 @@ services:
 
 #### CREAR CONTAINER CON NUESTRO PY
 
-  #FALTA EL TRY CATCH
+  insert_data:
+    build: .
+    depends_on:
+      - mongo
 
 #### METER JUPYTER
+
+  jupyter:
+    image: jupyter/datascience-notebook
+    restart: always
+    ports:
+      - 8888:8888
+    volumes:
+      - ./visualization.ipynb:/home/jovyan/work/visualization.ipynb
+    depends_on:
+      - mongo
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      JUPYTER_TOKEN: "tu_token_secreto"
+      MONGO_URI: "mongodb://root:example@mongo:27017/jackypepe"

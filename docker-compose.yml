@@ -25,7 +25,9 @@ services:
 #### CREAR CONTAINER CON NUESTRO PY
 
   insert_data:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile  
     depends_on:
       - mongo
 
